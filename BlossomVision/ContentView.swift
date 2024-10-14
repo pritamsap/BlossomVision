@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
+    
+    @State private var viewModel  = ViewModel()
     var body: some View {
-        VStack {
-            Text("Blossom")
-        }
-        .padding()
+        CameraView(image: $viewModel.currentFrame)
     }
 }
+
 
 #Preview {
     ContentView()

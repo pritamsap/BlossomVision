@@ -11,6 +11,12 @@
 		9C39A6482CB0C0F9003F6983 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6472CB0C0F9003F6983 /* ContentView.swift */; };
 		9C39A64A2CB0C0FB003F6983 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C39A6492CB0C0FB003F6983 /* Assets.xcassets */; };
 		9C39A64D2CB0C0FB003F6983 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C39A64C2CB0C0FB003F6983 /* Preview Assets.xcassets */; };
+		9C39A6562CB21AF5003F6983 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6552CB21AF5003F6983 /* FlowerClassifier.mlmodel */; };
+		9C39A6632CBDAB83003F6983 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6622CBDAB83003F6983 /* CameraManager.swift */; };
+		9C39A6672CBDB533003F6983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6662CBDB533003F6983 /* Extension.swift */; };
+		9C39A6692CBDBA9C003F6983 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6682CBDBA9C003F6983 /* ViewModel.swift */; };
+		9C39A66B2CBDBCC9003F6983 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A66A2CBDBCC9003F6983 /* CameraView.swift */; };
+		9C39A66D2CBDC2D7003F6983 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9C39A66C2CBDC2D7003F6983 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,13 @@
 		9C39A6472CB0C0F9003F6983 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9C39A6492CB0C0FB003F6983 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C39A64C2CB0C0FB003F6983 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9C39A6552CB21AF5003F6983 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
+		9C39A6572CB222EB003F6983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9C39A6622CBDAB83003F6983 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		9C39A6662CBDB533003F6983 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9C39A6682CBDBA9C003F6983 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9C39A66A2CBDBCC9003F6983 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		9C39A66C2CBDC2D7003F6983 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +64,17 @@
 		9C39A6442CB0C0F9003F6983 /* BlossomVision */ = {
 			isa = PBXGroup;
 			children = (
+				9C39A6572CB222EB003F6983 /* Info.plist */,
 				9C39A6452CB0C0F9003F6983 /* BlossomVisionApp.swift */,
+				9C39A6552CB21AF5003F6983 /* FlowerClassifier.mlmodel */,
 				9C39A6472CB0C0F9003F6983 /* ContentView.swift */,
 				9C39A6492CB0C0FB003F6983 /* Assets.xcassets */,
 				9C39A64B2CB0C0FB003F6983 /* Preview Content */,
+				9C39A6622CBDAB83003F6983 /* CameraManager.swift */,
+				9C39A6662CBDB533003F6983 /* Extension.swift */,
+				9C39A6682CBDBA9C003F6983 /* ViewModel.swift */,
+				9C39A66A2CBDBCC9003F6983 /* CameraView.swift */,
+				9C39A66C2CBDC2D7003F6983 /* .gitignore */,
 			);
 			path = BlossomVision;
 			sourceTree = "<group>";
@@ -126,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C39A64D2CB0C0FB003F6983 /* Preview Assets.xcassets in Resources */,
+				9C39A66D2CBDC2D7003F6983 /* .gitignore in Resources */,
 				9C39A64A2CB0C0FB003F6983 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C39A6672CBDB533003F6983 /* Extension.swift in Sources */,
+				9C39A66B2CBDBCC9003F6983 /* CameraView.swift in Sources */,
+				9C39A6562CB21AF5003F6983 /* FlowerClassifier.mlmodel in Sources */,
 				9C39A6482CB0C0F9003F6983 /* ContentView.swift in Sources */,
+				9C39A6632CBDAB83003F6983 /* CameraManager.swift in Sources */,
+				9C39A6692CBDBA9C003F6983 /* ViewModel.swift in Sources */,
 				9C39A6462CB0C0F9003F6983 /* BlossomVisionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +301,9 @@
 				DEVELOPMENT_TEAM = B6A7VXZ86X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlossomVision/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to camera need to recognize flowers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +333,9 @@
 				DEVELOPMENT_TEAM = B6A7VXZ86X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlossomVision/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to camera need to recognize flowers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
