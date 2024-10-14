@@ -1,3 +1,3 @@
 # BlossomVision
 
-SWIFTUI using CoreML to detech live environment objects : **In Progress**
+SWIFTUI using CoreML to detect live flower/plants objects : **In Progress**
