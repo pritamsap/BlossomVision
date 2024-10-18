@@ -14,7 +14,7 @@ class CameraManager: NSObject {
     private var deviceInput: AVCaptureDeviceInput?
     
     private var videoOutput: AVCaptureOutput?
-    private let systemPreferredCamera = AVCaptureDevice.default(for: .video)
+    private let systemPreferredCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
     private let sessionQueue = DispatchQueue(label: "video.preview.session")
     
     override init() {
@@ -61,9 +61,16 @@ class CameraManager: NSObject {
             return
         }
         
+       
+       
+        
         // 7.
         captureSession.addInput(deviceInput)
         captureSession.addOutput(videoOutput)
+        
+        if let connection = videoOutput.connection(with: .video) {
+            connection.videoRotationAngle = 90
+        }
         
         
     }
@@ -91,6 +98,8 @@ class CameraManager: NSObject {
         }
     }
     
+    
+    // Passing the continous flow of CGImage
     private var addToPreviewStream: ((CGImage) -> Void)?
     
     lazy var previewStream: AsyncStream<CGImage> = {
@@ -104,6 +113,12 @@ class CameraManager: NSObject {
     
 }
 
+
+/*
+ Process video frames captured by camera and process them in real time
+ CMSampleBuffer is the raw data and we try to convert it into CgImage
+ CGI - Core Graphics Image
+*/
 extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
