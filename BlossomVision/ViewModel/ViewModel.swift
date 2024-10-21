@@ -11,20 +11,35 @@ import Observation
 import UIKit
 import CoreML
 import SwiftUI
+import Combine
 
 @Observable
 class ViewModel {
+    var flowerList: [UIImage] = []
+    private var cancellables = Set<AnyCancellable>()  // To store Combine subscriptions
+
+
     var currentFrame: CGImage?
     
     var predictedFlower: String = ""
     private let cameraManager = CameraManager()
     
     private let flowerClassifier = FlowerClassifier()
+    
+    // Inject FlowerImageService to handle saving images
+      private let flowerImageService = FlowerImageService()
+      
      
     init() {
         Task {
             await handleCameraPreviews()
         }
+        
+        flowerImageService.$images
+            .sink { [weak self] images in
+                self?.flowerList = images
+            }
+            .store(in: &cancellables)
     }
     
     
@@ -43,8 +58,6 @@ class ViewModel {
     }
     
     func predictFlower(from image: CGImage) {
-        
-        print("Original image size: \(image.width) x \(image.height)")
         guard let pixelBuffer = image.toPixelBuffer(size: CGSize(width: 227, height: 227)) else {
                print("Failed to convert image to pixel buffer")
                DispatchQueue.main.async {
@@ -52,9 +65,6 @@ class ViewModel {
                }
                return
            }
-        
-        print("Image successfully converted to CVPixelBuffer of size 227x227")
-
         
         do {
             print("Attempting to make prediction with Core ML model...")
@@ -72,6 +82,14 @@ class ViewModel {
             }
         }
     }
+    
+    
+    func captureImage(image: CGImage) {
+        flowerImageService.saveFlowerImage(image: image)
+        print("Image captured and saved.")
+    }
+    
+ 
     
     
 }

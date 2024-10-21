@@ -10,8 +10,8 @@ import AVFoundation
 
 struct PredictView: View {
     
-    @State private var viewModel  = ViewModel()
-    
+    @Environment(ViewModel.self) private var viewModel
+
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -38,17 +38,19 @@ struct PredictView: View {
                         .font(.caption)
                         .bold()
                         .foregroundColor(.white)
-                        .frame(width: 220, height: 50)
+                        .frame(width: 250, height: 50)
                         .background(
                             LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.6)]),
                                            startPoint: .topLeading,
                                            endPoint: .bottomTrailing)
                         )
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                        .clipShape(RoundedRectangle(cornerRadius: 15.0))
                         .shadow(radius: 5)
 
                     Button(action: {
-                        // Your action here
+                        if let image = viewModel.currentFrame {
+                           viewModel.captureImage(image: image)
+                       }
                     }, label: {
                         Text("Capture")
                             .font(.caption)
@@ -56,12 +58,12 @@ struct PredictView: View {
                             .foregroundColor(.white)
                             .frame(width: 100, height: 50)
                             .background(
-                                LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.6)]),
+                                LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.6)]),
                                                startPoint: .topLeading,
                                                endPoint: .bottomTrailing)
                             )
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                            .shadow(radius: 5)  
+                            .clipShape(RoundedRectangle(cornerRadius: 15.0))
+                            .shadow(radius: 5)
                     })
                 }
                 
