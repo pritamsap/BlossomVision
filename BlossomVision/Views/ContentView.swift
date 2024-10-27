@@ -43,11 +43,21 @@ struct ContentView: View {
                 }else {
                     HStack {
                         Text("Flower Collection")
-                            .font(.subheadline)
                             .foregroundStyle(.white)
                             .opacity(0.7)
                             
                         Spacer()
+                        
+                        Button(action: {
+                            flowervm.deleteImagefolder()
+                        }, label: {
+                            Text("Delete")
+                                .foregroundStyle(.white)
+                                .opacity(0.7)
+                                .frame(width: 100, height: 30)
+                                .background(.gray)
+                                .clipShape(RoundedRectangle(cornerRadius: 7.0))
+                        })
                     }
                     .padding(.horizontal, 5)
                          

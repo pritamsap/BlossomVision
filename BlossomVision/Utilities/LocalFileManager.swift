@@ -92,4 +92,25 @@ struct LocalFileManager {
             return nil
         }
     }
+    
+    
+    // Delete folder
+    func deleteFolder(folderName: String) {
+        guard let folderURL = getFolderURL(folderName: folderName) else {
+            print("Error: Could not retrieve folder URL.")
+            return
+        }
+        
+        // Check if the folder exists at the URL
+        if FileManager.default.fileExists(atPath: folderURL.path(percentEncoded: false)) {
+            do {
+                try FileManager.default.removeItem(at: folderURL)
+                print("Folder deleted successfully.")
+            } catch let error {
+                print("Error deleting folder: \(error)")
+            }
+        } else {
+            print("Error: Folder does not exist at the specified path.")
+        }
+    }
 }

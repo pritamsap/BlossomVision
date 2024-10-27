@@ -33,5 +33,9 @@ import Combine
                        .store(in: &cancellables)
     }
     
+    func deleteImagefolder() {
+        imageService.deleteImageFolder()
+    }
+    
 
 }

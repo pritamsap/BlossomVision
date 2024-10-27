@@ -46,4 +46,8 @@ class FlowerImageService {
      
     }
     
+    func deleteImageFolder() {
+        fileManager.deleteFolder(folderName: folderName)
+    }
+    
 }

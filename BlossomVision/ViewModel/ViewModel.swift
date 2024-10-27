@@ -87,8 +87,4 @@ class ViewModel {
         flowerImageService.saveFlowerImage(image: image)
         print("Image captured and saved.")
     }
-    
- 
-    
-    
 }
