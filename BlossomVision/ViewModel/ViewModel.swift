@@ -18,7 +18,6 @@ class ViewModel {
     var flowerList: [UIImage] = []
     private var cancellables = Set<AnyCancellable>()  // To store Combine subscriptions
 
-
     var currentFrame: CGImage?
     
     var predictedFlower: String = ""

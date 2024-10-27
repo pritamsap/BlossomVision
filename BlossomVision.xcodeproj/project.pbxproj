@@ -17,9 +17,9 @@
 		9C39A6692CBDBA9C003F6983 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A6682CBDBA9C003F6983 /* ViewModel.swift */; };
 		9C39A66D2CBDC2D7003F6983 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9C39A66C2CBDC2D7003F6983 /* .gitignore */; };
 		9C39A66F2CC0BC7F003F6983 /* PredictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C39A66E2CC0BC7F003F6983 /* PredictView.swift */; };
-		9C972EA42CC2C560007EA07E /* SavePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C972EA32CC2C560007EA07E /* SavePhoto.swift */; };
 		9C972EA72CC31436007EA07E /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C972EA62CC31435007EA07E /* LocalFileManager.swift */; };
 		9C972EA92CC329C0007EA07E /* FlowerImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C972EA82CC329C0007EA07E /* FlowerImageService.swift */; };
+		9CF835932CCE930500D7DF39 /* FlowerImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF835922CCE930500D7DF39 /* FlowerImageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +35,9 @@
 		9C39A6682CBDBA9C003F6983 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9C39A66C2CBDC2D7003F6983 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9C39A66E2CC0BC7F003F6983 /* PredictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictView.swift; sourceTree = "<group>"; };
-		9C972EA32CC2C560007EA07E /* SavePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhoto.swift; sourceTree = "<group>"; };
 		9C972EA62CC31435007EA07E /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		9C972EA82CC329C0007EA07E /* FlowerImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerImageService.swift; sourceTree = "<group>"; };
+		9CF835922CCE930500D7DF39 /* FlowerImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerImageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +70,8 @@
 		9C39A6442CB0C0F9003F6983 /* BlossomVision */ = {
 			isa = PBXGroup;
 			children = (
-				9C972EA52CC31425007EA07E /* Utilities */,
 				9C39A6452CB0C0F9003F6983 /* BlossomVisionApp.swift */,
+				9C972EA52CC31425007EA07E /* Utilities */,
 				9C972EA22CC2C0DF007EA07E /* Services */,
 				9C972EA12CC2C0D8007EA07E /* Model */,
 				9C972EA02CC2C0D3007EA07E /* Views */,
@@ -96,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				9C39A6682CBDBA9C003F6983 /* ViewModel.swift */,
+				9CF835922CCE930500D7DF39 /* FlowerImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -122,7 +123,6 @@
 				9C39A6552CB21AF5003F6983 /* FlowerClassifier.mlmodel */,
 				9C39A6662CBDB533003F6983 /* Extension.swift */,
 				9C39A6622CBDAB83003F6983 /* CameraManager.swift */,
-				9C972EA32CC2C560007EA07E /* SavePhoto.swift */,
 				9C972EA82CC329C0007EA07E /* FlowerImageService.swift */,
 			);
 			path = Services;
@@ -208,11 +208,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C972EA92CC329C0007EA07E /* FlowerImageService.swift in Sources */,
+				9CF835932CCE930500D7DF39 /* FlowerImageViewModel.swift in Sources */,
 				9C39A6672CBDB533003F6983 /* Extension.swift in Sources */,
 				9C39A66F2CC0BC7F003F6983 /* PredictView.swift in Sources */,
 				9C972EA72CC31436007EA07E /* LocalFileManager.swift in Sources */,
 				9C39A6562CB21AF5003F6983 /* FlowerClassifier.mlmodel in Sources */,
-				9C972EA42CC2C560007EA07E /* SavePhoto.swift in Sources */,
 				9C39A6482CB0C0F9003F6983 /* ContentView.swift in Sources */,
 				9C39A6632CBDAB83003F6983 /* CameraManager.swift in Sources */,
 				9C39A6692CBDBA9C003F6983 /* ViewModel.swift in Sources */,

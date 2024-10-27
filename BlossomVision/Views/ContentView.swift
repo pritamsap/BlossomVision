@@ -8,45 +8,72 @@
 import SwiftUI
 import AVFoundation
 
+
+
 struct ContentView: View {
     @State private var switchCameraToggle : Bool = false
-    @State private var galleryEmpty: Bool = false
-    @State private var viewModel  = ViewModel()
+    @State private var galleryEmpty: Bool = true
+    var gradientBackground = LinearGradient(
+            gradient: Gradient(colors: [Color.gray.opacity(0.2), Color.white.opacity(0.3)]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    
+    @State var flowervm = FlowerImageViewModel()
 
     let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+          GridItem(.flexible(), spacing: 20),
+          GridItem(.flexible(), spacing: 20),
+          GridItem(.flexible(), spacing: 20)
+      ]
     var body: some View {
 
         NavigationStack {
             
+            Spacer()
+            SampleView()
+
             VStack {
-                if galleryEmpty {
+                if flowervm.galleryEmpty {
                     Spacer()
                     Text("Gallery Empty  \(Image(systemName: "photo"))")
                     Spacer()
+                   
+                
                 }else {
-                    //GalleryView()
-                    ScrollView {
+                    HStack {
+                        Text("Flower Collection")
+                            .font(.subheadline)
+                            .foregroundStyle(.white)
+                            .opacity(0.7)
+                            
+                        Spacer()
+                    }
+                    .padding(.horizontal, 5)
+                         
+                    ScrollView(showsIndicators: false) {
                                    LazyVGrid(columns: columns, spacing: 20) {
-                                       ForEach(viewModel.flowerList, id: \.self) { image in
+                                       ForEach(flowervm.images, id: \.self) { image in
                                            VStack {
                                                Image(uiImage: image)
                                                    .resizable()
-                                                   .scaledToFit()
-                                                   .frame(width: 100, height: 150)
-                                                   .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                   .shadow(radius: 5)
-                                               Text("Flower Name") // Placeholder for flower names
-                                                   .font(.caption)
-                                                   .foregroundColor(.white)
+                                                   .scaledToFill()
+                                                   .frame(width: 110, height: 110)
+                                                   .clipShape(RoundedRectangle(cornerRadius: 15))
+                                                   .shadow(radius: 3)
                                            }
+                                           .padding(3)
+                                           .background(Color.white)
+                                           .clipShape(RoundedRectangle(cornerRadius: 15))
+                                           .shadow(radius: 2)
+                                           .opacity(0.8)
                                        }
                                    }
-                                   .padding()
+                                   .padding(.horizontal, 10)
                                }
+                    .padding(.top, 10)
+                    .ignoresSafeArea()
+
                                
                                Spacer()
                 }
@@ -55,29 +82,35 @@ struct ContentView: View {
               
                     
             }.padding()
+            
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         switchCameraToggle.toggle()
                     } label: {
-                        Text("\(Image(systemName: "camera.circle"))")
+                        Text("\(Image(systemName: "camera.macro"))")
+                            .font(.caption)
                             .foregroundStyle(.white)
-                            .font(.title)
-                            .background(.primary)
-                            .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                            .padding()
+                            .frame(width: 70, height: 30)
+                            .background(gradientBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 15.0))
+                            .shadow(radius: 5)
                     }
                     
                 }
                 
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("Blossom").font(.title3).bold()
+                    Text("Blossom").font(.title2).fontWeight(.semibold)
                 }
+                
+    
                 
             }
             
             
             .sheet(isPresented: $switchCameraToggle, content: {
-                PredictView().environment(viewModel)
+                PredictView()
             })
             
             Spacer()
@@ -90,94 +123,23 @@ struct ContentView: View {
     
 }
 
-
-struct GalleryView: View {
+ 
+struct SampleView: View {
     var body: some View {
-        Text("Hello")
-        
-        //
-        //        HStack(spacing: 20) {
-        //            VStack {
-        //                Image("flower1")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Love In Mist")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //            VStack {
-        //                Image("flower2")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Carnation")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //            VStack {
-        //                Image("flower3")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Marigold")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //
-        //
-        //        }.padding()
-        //
-        //        HStack(spacing: 20) {
-        //            VStack {
-        //                Image("flower4")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Canturbur Belly")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //            VStack {
-        //                Image("flower5")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Rose")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //            VStack {
-        //                Image("flower6")
-        //                              .resizable()
-        //                              .frame(width: 100, height: 180)
-        //                              .clipShape(RoundedRectangle(cornerRadius: 15.0))
-        //                          .shadow(radius: 5)
-        //                Text("Sweet Pea")
-        //                    .font(.caption)
-        //                    .fontWeight(.semibold)
-        //                    .foregroundStyle(.gray)
-        //            }
-        //
-        //
-        //        }.padding()
-        //
-        //   }
-        
-        // }
+        ZStack {
+            RoundedRectangle(cornerRadius: 15.0)
+                .frame(width: 370, height: 100)
+                .foregroundStyle(.white)
+                .shadow(radius: 5)
+            
+            Text("Flowers are variant live things. There are millions of variety of flowers available around the world to be appreiciated.")
+                .foregroundStyle(.gray)
+                .font(.headline)
+                .opacity(0.9)
+                .padding(.horizontal, 30)
+        }
     }
 }
-
 
 #Preview {
     ContentView()

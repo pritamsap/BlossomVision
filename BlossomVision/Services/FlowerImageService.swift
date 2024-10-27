@@ -15,15 +15,19 @@ class FlowerImageService {
     private let fileManager = LocalFileManager.instance
     
     
+    init() {
+        retrieveImagesList()
+    }
+    
     // Save the given image
     func saveFlowerImage(image: CGImage) {
         let imageName = "flower_\(UUID().uuidString)"
+        print("Trying to save Image \(imageName)")
         fileManager.saveImage(image: image, imageName: imageName, folderName: folderName)
     }
     
     func retrieveImagesList() {
         images.removeAll()
-        
         
         // Get the list of file names from the folder
         guard let imageNames = fileManager.getAllImages(folderName: folderName) else {
@@ -39,9 +43,7 @@ class FlowerImageService {
                         print("Failed to load image: \(imageName)")
                 }
         }
-        
-        
-        
+     
     }
     
 }

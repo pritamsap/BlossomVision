@@ -31,6 +31,7 @@ struct LocalFileManager {
         // 4. Save image to path
         do {
             try data.write(to: url)
+            print("Saved Image")
         } catch let error {
             print("Error saving image. \(error)")
         }

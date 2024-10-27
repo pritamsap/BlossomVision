@@ -10,7 +10,14 @@ import AVFoundation
 
 struct PredictView: View {
     
-    @Environment(ViewModel.self) private var viewModel
+    @State private var viewModel  = ViewModel()
+
+    //@Environment(ViewModel.self) private var viewModel
+    var gradientBackground = LinearGradient(
+            gradient: Gradient(colors: [Color.gray.opacity(0.2), Color.white.opacity(0.3)]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
 
     var body: some View {
         ZStack {
@@ -22,53 +29,52 @@ struct PredictView: View {
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 5)
-
+                
+                    VStack() {
+                        Spacer()
+                        Text(viewModel.predictedFlower.uppercased())
+                            .font(.caption)
+                            .foregroundStyle(.white)
+                            .frame(width: 230, height: 2)
+                            .padding()
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.2), Color.white.opacity(0.3)]),
+                                                       startPoint: .topLeading,
+                                                       endPoint: .bottomTrailing))
+                            .clipShape(RoundedRectangle(cornerRadius: 50.0))
+                            .opacity(0.9)
+                            .padding(.bottom, 20)
+                            
+                        HStack() {
+                            Spacer()
+                            Button(action: {
+                                if let image = viewModel.currentFrame {
+                                   viewModel.captureImage(image: image)
+                               }
+                            }, label: {
+                                Circle()
+                                    .frame(width: 80, height: 80)
+                                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.9), Color.white.opacity(0.9)]),
+                                                                    startPoint: .topLeading,
+                                                                    endPoint: .bottomTrailing))
+                                    .shadow(radius: 10)
+                                    .overlay(
+                                                Circle()
+                                                    .stroke(Color.gray, lineWidth: 4) // Adjust color and line width for the border
+                                            )
+                            })
+                            Spacer()
+                        }
+                        .padding(.bottom, 90)
+                    }
                         
                 }
                 else {
                     ContentUnavailableView("No camera Feed", systemImage: "xmark.circle").frame(width: geometry.size.width, height: geometry.size.height)
+                   
+                  
                 }
             }
             
-            VStack(spacing: 10) {
-                Spacer()
-                HStack(spacing: 20) {
-                    
-                    Text(viewModel.predictedFlower.uppercased())
-                        .font(.caption)
-                        .bold()
-                        .foregroundColor(.white)
-                        .frame(width: 250, height: 50)
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.6)]),
-                                           startPoint: .topLeading,
-                                           endPoint: .bottomTrailing)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 15.0))
-                        .shadow(radius: 5)
-
-                    Button(action: {
-                        if let image = viewModel.currentFrame {
-                           viewModel.captureImage(image: image)
-                       }
-                    }, label: {
-                        Text("Capture")
-                            .font(.caption)
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 100, height: 50)
-                            .background(
-                                LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.6)]),
-                                               startPoint: .topLeading,
-                                               endPoint: .bottomTrailing)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 15.0))
-                            .shadow(radius: 5)
-                    })
-                }
-                
-            }
-            .padding(.vertical, 10)
         }
         
     
@@ -76,5 +82,5 @@ struct PredictView: View {
 }
 
 #Preview {
-    PredictView()
+    PredictView().environment(ViewModel())
 }
